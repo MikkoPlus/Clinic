@@ -1,0 +1,9 @@
+.header__item_type_mobile {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .header__item_type_mobile {
+        display: block;
+    }
+}

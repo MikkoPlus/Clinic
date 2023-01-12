@@ -1,0 +1,17 @@
+.header__logo-link {
+    display: block;
+    margin-right: 44.5px;
+}
+
+@media (max-width: 768px) {
+    .header__logo-link {
+        margin-right: 0;
+        margin-left: 43px;
+    }
+}
+
+@media (max-width: 364px) {
+    .header__logo-link {
+        margin-left: 14px;
+    }
+}

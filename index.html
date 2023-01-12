@@ -9,33 +9,48 @@
 </head>
 <body class="page">
         <header class="header">
-            <div class="header__top-bar">
+            <div class="header__top-bar container">
                 <div class="header__item">
-                    <img src="./images/icons/logo.svg" alt="Логотип" class="logo">
+                    <div class="hamburger">
+                        <span class="hamburger__line"></span>
+                      </div>
+                    <a href="#" class="header__logo-link link">
+                        <img src="./images/icons/logo.svg" alt="Логотип" class="logo">
+                    </a>
+
                 <div class="header__geoposition">
                     <p class="header__town">Ростов-на-Дону</p>
                     <p class="header__street">ул. Ленина, 2Б</p>
                 </div>
                 </div>
     
-                <div class="header__item">
+                <div class="header__item header__item_type_fullscreen">
                     <div class="header__call">
-                        <img src="./images/icons/social/whatsapp.svg" alt="WhatsApp" class="header__num-icon">
-                        <a href="tel:88630000000" class="header__number">+7(863) 000 00 00</a>
+                        <a href="#"><img src="./images/icons/social/whatsapp.svg" alt="WhatsApp" class="header__num-icon link"></a>
+                        <a href="tel:88630000000" class="header__number link">+7(863) 000 00 00</a>
                     </div>
-                    <button class="header__btn">Записаться на прием</button>        
+                    <button class="header__btn link">Записаться на прием</button>        
                 </div>
+
+                <div class="header__item header__item_type_mobile">
+                    <a href="tel:88630000000" class="header__number link">+7(863) 000 00 00</a>
+                    <p class="header__town">Ростов-на-Дону</p>
             </div>
+            </div>
+        </div>
 
             <nav class="header__menu-bar menu">
-                <ul class="menu__list">
-                    <li class="menu__item"><a href="#" class="menu__link">О клинике</a></li>
-                    <li class="menu__item"><a href="#" class="menu__link">Услуги</a></li>
-                    <li class="menu__item"><a href="#" class="menu__link">Специалисты</a></li>
-                    <li class="menu__item"><a href="#" class="menu__link">Цены</a></li>
-                    <li class="menu__item"><a href="#" class="menu__link">Контакты</a></li>
+                <ul class="menu__list container">
+                    <li class="menu__item"><a href="#" class="menu__link link">О клинике</a></li>
+                    <li class="menu__item"><a href="#" class="menu__link link">Услуги</a></li>
+                    <li class="menu__item"><a href="#" class="menu__link link">Специалисты</a></li>
+                    <li class="menu__item"><a href="#" class="menu__link link">Цены</a></li>
+                    <li class="menu__item"><a href="#" class="menu__link link">Контакты</a></li>
                 </ul>
+
+                <button class="header__btn link header__btn_mobile">Записаться на прием</button>   
             </nav>
         </header>
+    <script src="scripts/script.js"></script>
 </body>
 </html>

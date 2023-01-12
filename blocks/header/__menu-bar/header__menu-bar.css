@@ -1,0 +1,11 @@
+.header__menu-bar {
+    display: block;
+    background-color: rgba(31, 161, 129, 1);
+    padding: 10px 20px;
+}
+
+@media (max-width: 768px) {
+    .header__menu-bar {
+        padding-top: 48px;
+    }
+}

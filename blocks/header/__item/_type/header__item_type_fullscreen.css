@@ -1,0 +1,5 @@
+@media (max-width: 768px) {
+    .header__item_type_fullscreen {
+        display: none;
+    }
+}

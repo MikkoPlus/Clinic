@@ -1,0 +1,19 @@
+.header__geoposition {
+    position: relative;
+}
+.header__geoposition::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -23px;
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: url('../images/icons/geo-position.svg') center center/contain no-repeat;
+}
+
+@media (max-width: 768px) {
+    .header__geoposition {
+        display: none;
+    }
+}

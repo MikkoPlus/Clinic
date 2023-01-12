@@ -1,0 +1,12 @@
+.hamburger_open .hamburger__line::before{
+    transform: rotate(45deg);
+    bottom: 0;
+}
+
+.hamburger_open .hamburger__line::after{
+    transform: rotate(-45deg);
+    top: 0;
+}
+.hamburger_open .hamburger__line {
+    background-color: rgba(0, 0, 0, 0);
+}

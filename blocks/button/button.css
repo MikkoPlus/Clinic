@@ -1,4 +1,4 @@
-.header__btn {
+.button {
     background: #0DBC91;
     border-radius: 50px;
     font-weight: 400;
@@ -6,11 +6,18 @@
     line-height: 21px;
     color: #FFFFFF;
     padding: 11px 24px;
-    border: none;
+    border: 1px solid #0DBC91;
+    cursor: pointer;
+    transition: all .3s ease 0s;
+}
+
+.button:hover {
+    background-color: #fff;
+    color: #0DBC91
 }
 
 @media (max-width: 768px) {
-    .header__btn {
+    .button {
         display: none;
     }
 }

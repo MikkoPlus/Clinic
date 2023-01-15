@@ -1,0 +1,34 @@
+.card__test {
+    margin-top: 15px;
+    font-size: 16px;
+    line-height: 21px;
+    color: #364844;
+    position: relative;
+}
+
+.card__test::before {
+    content: '';
+    position: absolute;
+    top: 7px;
+    left: -16px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: #1FA181;
+}
+
+.card__test:first-of-type {
+    margin-top: 0;
+}
+
+@media (max-width: 769px) {
+    .card__test {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 565px) {
+    .card__test {
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,19 @@
+.card__gender {
+    margin: 0;
+    font-size: 22px;
+    line-height: 28px;
+    font-weight: 400;
+    color: #364844;
+}
+
+@media (max-width: 769px) {
+    .card__gender {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 565px) {
+    .card__gender {
+        font-size: 22px;
+    }
+}

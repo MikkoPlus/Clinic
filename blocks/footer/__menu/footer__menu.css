@@ -1,0 +1,8 @@
+@media (max-width: 520px) {
+    .footer__menu .menu__item {
+        margin: 0;
+    }
+    .footer__menu .menu__link {
+        line-height: 200%;
+    }
+}

@@ -1,0 +1,4 @@
+.check-up__inner {
+    display: flex;
+    transition: all .5s ease 0s;
+}

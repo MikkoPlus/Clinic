@@ -1,0 +1,19 @@
+.card__total-price {
+    margin: 0;
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 400;
+    color: #364844;
+    margin-right: 16px;
+}
+@media (max-width: 769px) {
+    .card__total-price {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 565px) {
+    .card__total-price {
+        font-size: 20px;
+    }
+}

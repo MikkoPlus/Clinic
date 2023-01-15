@@ -1,0 +1,15 @@
+.social__link {
+    margin-right: 15px;
+}
+.social__link:last-of-type {
+    margin-right: 0;
+}
+
+@media (max-width: 450px) {
+    .social__link {
+        margin: 15px 0 0;
+    }
+    .social__link:first-of-type {
+        margin-top: 0;
+    }
+}

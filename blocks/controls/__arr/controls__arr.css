@@ -1,0 +1,6 @@
+.controls__arr {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+    cursor: pointer;
+}

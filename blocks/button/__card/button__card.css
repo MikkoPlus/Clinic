@@ -1,0 +1,7 @@
+.button__card {
+    display: block;
+}
+
+.button__card:first-of-type {
+    margin-right: 14px;
+}

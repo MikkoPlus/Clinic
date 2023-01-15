@@ -1,13 +1,14 @@
-.header__btn_mobile {
+.button__menu {
     display: none;
 }
 
 @media (max-width: 768px) {
-    .header__btn {
+    .button__menu {
         display: block;
         margin-top: 39px;
         color: #1FA181;
         background-color: #F6F6F6;
         font-weight: 700;
+        border: none;
     }
 }

@@ -1,0 +1,25 @@
+.about__text-content {
+    flex: 1 0 50%;
+    padding-top: 144px;
+    padding-left: 20px;
+}
+
+@media (max-width: 950px) {
+    .about__text-content {
+        order: 1;
+        padding: 90px 50px 100px;
+        margin: 0;
+    }
+}
+
+@media (max-width: 510px) {
+    .about__text-content {
+        padding: 50px 20px 80px ;
+    }
+}
+
+@media (max-width: 410px) {
+    .about__text-content {
+        padding: 35px 17px 72px;
+    }
+}

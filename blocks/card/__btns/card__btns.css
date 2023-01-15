@@ -1,0 +1,6 @@
+.card__btns {
+    margin-top: 26px;
+    display: flex;
+    position: relative;
+    z-index: 2;
+}

@@ -1,0 +1,12 @@
+.about {
+    display: flex;
+    width: 100%;
+    min-height: 533px;
+    background-color: #F8FBFA;
+}
+
+@media (max-width: 950px) {
+    .about {
+        flex-direction: column;
+    }
+}

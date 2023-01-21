@@ -5,7 +5,7 @@
     position: relative;
     width: 100%;
     background: url('../../images/content-pic/check-up.webp') center right/contain no-repeat;
-    margin-right: 50px;
+    margin: 0px 5px ;
 }
 
 @media (max-width: 769px) {

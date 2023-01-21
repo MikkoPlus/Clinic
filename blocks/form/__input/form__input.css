@@ -1,0 +1,17 @@
+.form__input {
+    width: 90%;
+    height: 30px;
+    margin: 0;
+    display: block;
+    border: none;
+    box-shadow: inset 1px -1px 10px rgba(241, 241, 241, 0.9);
+    margin-top: 5px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    transition: all .5s ease 0s;
+}
+
+.form__input:focus {
+    outline: none;
+    box-shadow: inset 1px -1px 10px rgba(69, 146, 127, 0.4);
+}

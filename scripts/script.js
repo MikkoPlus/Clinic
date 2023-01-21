@@ -21,7 +21,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     function sliderHandler() {
-        const sliderWrapper = document.querySelector('.chech-up__wrapper'),
+        const sliderWrapper = document.querySelector('.check-up__wrapper'),
               sliderInner = sliderWrapper.querySelector('.check-up__inner'),
               slides = sliderWrapper.querySelectorAll('.card'),
               prev = document.querySelector('.controls__arr_left'),
@@ -92,6 +92,155 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function popupHandler () {
+      const buttons = document.querySelectorAll('button.button'),
+            popup = document.querySelector('.popup'),
+            page = document.querySelector('.page'),
+            pageWidth = page.getBoundingClientRect().width; 
+    
+      function bodyLock () {
+        page.classList.add('page_lock');
+    
+        const openPopupPageWidth = page.getBoundingClientRect().width,
+              sideScrollWidth = openPopupPageWidth - pageWidth + 'px';
+    
+            page.style.paddingRight = sideScrollWidth;
+      }
+    
+      function bodyUnlock () {
+        page.style.paddingRight = 0;
+        page.classList.remove('page_lock');
+      }
+      function openPopup (targetPopup) {
+        targetPopup.parentElement.classList.add('popup_open');
+        targetPopup.classList.add('popup__window_open');
+        
+        closePopupOnIconClick(targetPopup);
+        bodyLock();
+      }
+    
+      function closePopupOnIconClick (targetPopup) {
+        const closeIcon = targetPopup.querySelector('.popup__close'); 
+    
+        closeIcon.addEventListener('click', closePopup);
+      }
+      
+      function clearInputsValueAfterClosePopup (popup) {
+        const form = popup.querySelector('form');
+        form.querySelectorAll('input').forEach(input => {
+          input.value = '';
+        });
+      }
+    
+      function closePopup (event) {
+        const targetPopup = event.target.parentElement;
+    
+        targetPopup.parentElement.classList.remove('popup_open');
+    
+        setTimeout(() => {
+          targetPopup.classList.remove('popup__window_open');
+        }, 400);
+        bodyUnlock();
+        clearInputsValueAfterClosePopup(targetPopup);
+      }
+    
+      buttons.forEach(btn => {
+        if (btn.hasAttribute('data-popup')) {
+          btn.addEventListener('click', e => {
+            e.preventDefault();
+    
+            const targetBtn = e.target,
+                  popupId = targetBtn.getAttribute('data-popup'),
+                  targetPopup = popup.querySelector(`#${popupId}`);
+    
+            openPopup(targetPopup);
+          });
+        }
+      });
+    }
+
+    function submitFormHandler () {
+      const form = document.querySelector('#appointment-form');
+    
+      form.addEventListener('submit', formSend);
+    
+      async function formSend (e) {
+        e.preventDefault();
+    
+        let error = formValidate(),
+            formData = new FormData(form);
+    
+            if (error === 0) {
+              form.classList.add('form_sending');
+    
+              let response = await fetch('sendmail.php', {
+                method: 'POST',
+                body: formData
+              });
+              if (response.ok) {
+                let result = await response.json();
+      
+                alert(result.message);
+                form.reset();
+                form.classList.remove('form_sending');
+              } else {
+                alert('Ошибка!');
+                form.classList.remove('form_sending');
+              }
+            } else {
+              alert('Заполните обязательные поля!');
+            }
+      }
+    
+      function formValidate() {
+        let error = 0,
+            formReq = document.querySelectorAll('._req');
+    
+        for (let i = 0; i < formReq.length; i++) {
+          const input = formReq[i];
+          formRemoveError(input);
+
+          if (input.classList.contains('form__input_type_email')) {
+            if (emailTest(input)) {
+              formAddError(input);
+              error++;
+            }
+          } else if (input.classList.contains('form__input_type_number')) {
+              let length = input.value.length;
+              if (length !== 18) {
+                formAddError(input);
+                error++;
+              }
+          }
+           else {
+            if (input.value === '') {
+              formAddError(input);
+              error++;
+            }
+          }
+        }
+        return error;
+      }
+
+      function formAddError(input) {
+        input.parentElement.classList.add('_error');
+        input.classList.add('_error');
+      }
+    
+      function formRemoveError(input) {
+        input.parentElement.classList.remove('_error');
+        input.classList.remove('_error');
+      }
+
+      // Функция теста email        
+      function emailTest(input) {
+        return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(input.value);
+      }
+    
+    }
+
     sliderHandler();
     openMenuHandler ();
+    popupHandler ();
+    submitFormHandler ();
 });

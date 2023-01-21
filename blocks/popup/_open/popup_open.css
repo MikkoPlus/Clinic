@@ -1,0 +1,5 @@
+.popup_open {
+    background-color: rgba(69, 146, 127, 0.9);
+    visibility: visible;
+    opacity: 1;
+}

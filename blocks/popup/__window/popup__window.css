@@ -1,0 +1,18 @@
+.popup__window {
+    position: relative;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    padding: 30px 15px;
+    min-height: 300px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    background-color: #fff;
+    border-radius: 25px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 1s ease 0s;
+}

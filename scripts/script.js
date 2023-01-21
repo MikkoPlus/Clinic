@@ -20,10 +20,11 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function sliderHandler() {
+    function sliderHandler () {
         const sliderWrapper = document.querySelector('.check-up__wrapper'),
               sliderInner = sliderWrapper.querySelector('.check-up__inner'),
               slides = sliderWrapper.querySelectorAll('.card'),
+              controlsBar = document.querySelector('.controls'),
               prev = document.querySelector('.controls__arr_left'),
               next = document.querySelector('.controls__arr_right'),
               currentCount = document.querySelector('#current'),
@@ -89,6 +90,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
         if (slides.length > 1) {
             startInnerSlider();
+        } else {
+          controlsBar.style.display = 'none';
         }
     }
 
@@ -238,6 +241,121 @@ window.addEventListener('DOMContentLoaded', () => {
       }
     
     }
+
+    function checkUpCardsHandler () {
+
+
+      const checkUpBase = [
+        {
+          title: "check-up",
+          gender: "для мужчин",
+          tests: ['Гормональный скрининг', 'Тестостерон', 'Свободный тестостерон', 'Глобулин, связывающий половые гормоны'],
+          price: {
+            total: 2800,
+            ex: 3500
+          }
+        },
+        {
+          title: "check-up",
+          gender: "для мужчин",
+          tests: ['Гормональный скрининг', 'Тестостерон', 'Свободный тестостерон', 'Глобулин, связывающий половые гормоны'],
+          price: {
+            total: 3000,
+            ex: 5000
+          }
+        },
+        {
+          title: "check-up",
+          gender: "для женщин",
+          tests: ['Гормональный скрининг', 'Глобулин, связывающий половые гормоны'],
+          price: {
+            total: 3000,
+            ex: 4000
+          }
+        },
+      ];
+
+      
+
+      checkUpBase.forEach(checkUp => {
+        const {title, gender, tests} = checkUp;
+        const {total, ex} = checkUp.price;
+
+        const newCard = createCard(title, gender, tests, total, ex);
+
+        renderCard(newCard);
+      });
+
+
+    //   class MenuCard {
+    //     constructor(title, descr, price, parentSelector, ...classes) {
+    //         this.title = title;
+    //         this.descr = descr;
+    //         this.price = price; 
+    //         this.classes = classes;
+    //         this.parent = document.querySelector(parentSelector);
+    //         this.transfer = 27;
+    //         this.changeToUAH();
+    //     }
+    //     render() {
+    //         const element = document.createElement('div');
+    //         if(this.classes.length === 0) {
+    //             this.element = 'menu__item';
+    //             element.classList.add(this.element);
+    //         } else {
+    //             this.classes.forEach(className => element.classList.add(className));
+    //         }
+    //         element.innerHTML = `
+    //             <img src=${this.src} alt=${this.alt}>
+    //             <h3 class="menu__item-subtitle">${this.title}</h3>
+    //             <div class="menu__item-descr">${this.descr}</div>
+    //             <div class="menu__item-divider"></div>
+    //             <div class="menu__item-price">
+    //                 <div class="menu__item-cost">Цена:</div>
+    //                 <div class="menu__item-total"><span>${this.price}</span> грн/день</div>
+    //             </div>
+    //         `;
+    //         this.parent.append(element);
+    //     }
+    // }
+
+      function createCard (title, gender, tests, total, ex) {
+        const cardTemplate = document.querySelector('#card').content,
+               cardElement = cardTemplate.querySelector('.card').cloneNode(true),
+               cardTitle = cardElement.querySelector('.card__title'),
+               cardGender = cardElement.querySelector('.card__gender'),
+               cardTestsList = cardElement.querySelector('.card__tests'),
+               cardPrice = cardElement.querySelector('.card__total-price'),
+               cardExPrice = cardElement.querySelector('.card__ex-price');
+              
+        cardTitle.textContent = title;
+        cardGender.textContent = gender;
+
+        tests.forEach(test => {
+          const cardTestElement = document.createElement('li');
+
+          cardTestElement.classList.add('card__test');
+          cardTestElement.textContent = test;
+          cardTestsList.append(cardTestElement);
+        });
+
+        cardPrice.textContent = `Всего: ${total}`;
+        cardExPrice.textContent = ex;
+
+        return cardElement;
+      }
+
+      function renderCard (card) {
+        const checkUpInner = document.querySelector('.check-up__inner');
+
+        console.log(card);
+
+        checkUpInner.prepend(card);
+      }
+
+    }
+
+    checkUpCardsHandler ();
 
     sliderHandler();
     openMenuHandler ();

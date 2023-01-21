@@ -64,48 +64,7 @@
             <section class="check-up">
                 <div class="check-up__wrapper container">
                     <div class="check-up__inner">
-                        <div class="card">
-                            <div class="card__text-content">
-                                <h2 class="card__title">Check-UP</h2>
-                                <p class="card__gender">для мужчин</p>
-                                <ul class="card__tests">
-                                    <li class="card__test">Гормональный скрининг</li>
-                                    <li class="card__test">Тестостерон</li>
-                                    <li class="card__test">Свободный тестостерон</li>
-                                    <li class="card__test">Глобулин, связывающий половые гормоны</li>
-                                </ul>
-                                <div class="card__price">
-                                    <p class="card__total-price">Всего 2800₽</p>
-                                    <p class="card__ex-price">3500₽</p>
-                                </div>
-    
-                                <div class="card__btns">
-                                    <button data-popup="appointment" class="button button__card">Записаться</button>
-                                    <button data-popup="more" class="button button__card button__card_grey">Подробнее</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card__text-content">
-                                <h2 class="card__title">Check-UP</h2>
-                                <p class="card__gender">для мужчин</p>
-                                <ul class="card__tests">
-                                    <li class="card__test">Гормональный скрининг</li>
-                                    <li class="card__test">Тестостерон</li>
-                                    <li class="card__test">Свободный тестостерон</li>
-                                    <li class="card__test">Глобулин, связывающий половые гормоны</li>
-                                </ul>
-                                <div class="card__price">
-                                    <p class="card__total-price">Всего 2800₽</p>
-                                    <p class="card__ex-price">3500₽</p>
-                                </div>
-    
-                                <div class="card__btns">
-                                    <button data-popup="appointment" class="button button__card">Записаться</button>
-                                    <button data-popup="more" class="button button__card button__card_grey">Подробнее</button>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
                 <div class="check-up__controls controls">
@@ -139,6 +98,28 @@
                     <div class="popup__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, beatae blanditiis tenetur voluptatem cupiditate dicta tempora necessitatibus vitae, atque corporis repellendus. A maxime nemo impedit enim et minus, fugiat corporis!</div>
                 </div>
             </section>
+
+            <template id="card">
+                <div class="card">
+                    <div class="card__content">
+                        <div class="card__text-content">
+                            <h2 class="card__title">Check-UP</h2>
+                            <p class="card__gender">для мужчин</p>
+                            <ul class="card__tests">
+                            </ul>
+                            <div class="card__price">
+                                <p class="card__total-price">Всего 2800₽</p>
+                                <p class="card__ex-price">3500₽</p>
+                            </div>
+                        </div>
+
+                        <div class="card__btns">
+                            <button data-popup="appointment" class="button button__card">Записаться</button>
+                            <button data-popup="more" class="button button__card button__card_grey">Подробнее</button>
+                        </div>
+                    </div>
+                </div>
+            </template>
         </main>
 
         <footer class="footer">

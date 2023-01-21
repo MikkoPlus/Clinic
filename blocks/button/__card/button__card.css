@@ -1,5 +1,6 @@
 .button__card {
     display: block;
+    padding: 11px 58px;
 }
 
 .button__card:first-of-type {

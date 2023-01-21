@@ -1,14 +1,14 @@
-.card__text-content {
+.card__content {
     padding: 53px 0px 56px 63px;
     display: flex;
     flex-direction: column;
     position: relative;
+    justify-content: space-between;
     width: 432px;
-    height: 100%;
     background-color: #E2F0EF;
 }
 
-.card__text-content::after {
+.card__content::after {
     content: '';
     width: 0px;
     height: 0;
@@ -22,20 +22,20 @@
 }
 
 @media (max-width: 920px) {
-    .card__text-content {
+    .card__content {
         width: 365px;
     }
 }
 
 @media (max-width: 769px) {
-    .card__text-content {
+    .card__content {
         width: 40%;
         padding-left: 40px;
     }
 }
 
 @media (max-width: 565px) {
-    .card__text-content {
+    .card__content {
         width: 100%;
         padding: 53px 20px 56px 63px;
     }

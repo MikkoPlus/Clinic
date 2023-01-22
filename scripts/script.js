@@ -1,6 +1,8 @@
 'use strict';
 
 window.addEventListener('DOMContentLoaded', () => {
+
+
     function openMenuHandler () {
         const hamburger = document.querySelector('.hamburger'),
               header = document.querySelector('.header'),
@@ -103,11 +105,10 @@ window.addEventListener('DOMContentLoaded', () => {
     
       function bodyLock () {
         page.classList.add('page_lock');
-    
         const openPopupPageWidth = page.getBoundingClientRect().width,
               sideScrollWidth = openPopupPageWidth - pageWidth + 'px';
     
-            page.style.paddingRight = sideScrollWidth;
+        page.style.paddingRight = sideScrollWidth;
       }
     
       function bodyUnlock () {
@@ -127,26 +128,24 @@ window.addEventListener('DOMContentLoaded', () => {
     
         closeIcon.addEventListener('click', closePopup);
       }
-      
-      function clearInputsValueAfterClosePopup (popup) {
-        const form = popup.querySelector('form');
-        form.querySelectorAll('input').forEach(input => {
-          input.value = '';
-        });
-      }
     
       function closePopup (event) {
         const targetPopup = event.target.parentElement;
     
         targetPopup.parentElement.classList.remove('popup_open');
+
+        let id = targetPopup.getAttribute('id');
+
+        if (id === 'more') {
+          targetPopup.querySelectorAll('.popup__text-content').forEach(item => item.classList.remove('popup__text-content_open'));
+        }
     
         setTimeout(() => {
           targetPopup.classList.remove('popup__window_open');
         }, 400);
         bodyUnlock();
-        clearInputsValueAfterClosePopup(targetPopup);
       }
-    
+
       buttons.forEach(btn => {
         if (btn.hasAttribute('data-popup')) {
           btn.addEventListener('click', e => {
@@ -155,7 +154,13 @@ window.addEventListener('DOMContentLoaded', () => {
             const targetBtn = e.target,
                   popupId = targetBtn.getAttribute('data-popup'),
                   targetPopup = popup.querySelector(`#${popupId}`);
-    
+
+            if (popupId === 'more') {
+              const dataAtrCardId = btn.getAttribute('data-card-id');
+
+              const currPopup = targetPopup.querySelector(`.popup__text-content[data-curr-card-id="${dataAtrCardId}"]`);
+              currPopup.classList.add('popup__text-content_open');
+            }
             openPopup(targetPopup);
           });
         }
@@ -181,14 +186,15 @@ window.addEventListener('DOMContentLoaded', () => {
                 body: formData
               });
               if (response.ok) {
-                let result = await response.json();
-      
-                alert(result.message);
+
+
+                alert('Данные отправлены');
                 form.reset();
                 form.classList.remove('form_sending');
               } else {
                 alert('Ошибка!');
                 form.classList.remove('form_sending');
+                form.reset();
               }
             } else {
               alert('Заполните обязательные поля!');
@@ -242,120 +248,7 @@ window.addEventListener('DOMContentLoaded', () => {
     
     }
 
-    function checkUpCardsHandler () {
-
-
-      const checkUpBase = [
-        {
-          title: "check-up",
-          gender: "для мужчин",
-          tests: ['Гормональный скрининг', 'Тестостерон', 'Свободный тестостерон', 'Глобулин, связывающий половые гормоны'],
-          price: {
-            total: 2800,
-            ex: 3500
-          }
-        },
-        {
-          title: "check-up",
-          gender: "для мужчин",
-          tests: ['Гормональный скрининг', 'Тестостерон', 'Свободный тестостерон', 'Глобулин, связывающий половые гормоны'],
-          price: {
-            total: 3000,
-            ex: 5000
-          }
-        },
-        {
-          title: "check-up",
-          gender: "для женщин",
-          tests: ['Гормональный скрининг', 'Глобулин, связывающий половые гормоны'],
-          price: {
-            total: 3000,
-            ex: 4000
-          }
-        },
-      ];
-
-      
-
-      checkUpBase.forEach(checkUp => {
-        const {title, gender, tests} = checkUp;
-        const {total, ex} = checkUp.price;
-
-        const newCard = createCard(title, gender, tests, total, ex);
-
-        renderCard(newCard);
-      });
-
-
-    //   class MenuCard {
-    //     constructor(title, descr, price, parentSelector, ...classes) {
-    //         this.title = title;
-    //         this.descr = descr;
-    //         this.price = price; 
-    //         this.classes = classes;
-    //         this.parent = document.querySelector(parentSelector);
-    //         this.transfer = 27;
-    //         this.changeToUAH();
-    //     }
-    //     render() {
-    //         const element = document.createElement('div');
-    //         if(this.classes.length === 0) {
-    //             this.element = 'menu__item';
-    //             element.classList.add(this.element);
-    //         } else {
-    //             this.classes.forEach(className => element.classList.add(className));
-    //         }
-    //         element.innerHTML = `
-    //             <img src=${this.src} alt=${this.alt}>
-    //             <h3 class="menu__item-subtitle">${this.title}</h3>
-    //             <div class="menu__item-descr">${this.descr}</div>
-    //             <div class="menu__item-divider"></div>
-    //             <div class="menu__item-price">
-    //                 <div class="menu__item-cost">Цена:</div>
-    //                 <div class="menu__item-total"><span>${this.price}</span> грн/день</div>
-    //             </div>
-    //         `;
-    //         this.parent.append(element);
-    //     }
-    // }
-
-      function createCard (title, gender, tests, total, ex) {
-        const cardTemplate = document.querySelector('#card').content,
-               cardElement = cardTemplate.querySelector('.card').cloneNode(true),
-               cardTitle = cardElement.querySelector('.card__title'),
-               cardGender = cardElement.querySelector('.card__gender'),
-               cardTestsList = cardElement.querySelector('.card__tests'),
-               cardPrice = cardElement.querySelector('.card__total-price'),
-               cardExPrice = cardElement.querySelector('.card__ex-price');
-              
-        cardTitle.textContent = title;
-        cardGender.textContent = gender;
-
-        tests.forEach(test => {
-          const cardTestElement = document.createElement('li');
-
-          cardTestElement.classList.add('card__test');
-          cardTestElement.textContent = test;
-          cardTestsList.append(cardTestElement);
-        });
-
-        cardPrice.textContent = `Всего: ${total}`;
-        cardExPrice.textContent = ex;
-
-        return cardElement;
-      }
-
-      function renderCard (card) {
-        const checkUpInner = document.querySelector('.check-up__inner');
-
-        console.log(card);
-
-        checkUpInner.prepend(card);
-      }
-
-    }
-
-    checkUpCardsHandler ();
+    
 
     sliderHandler();
     openMenuHandler ();

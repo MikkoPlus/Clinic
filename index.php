@@ -1,3 +1,5 @@
+<?php require 'database.php' ?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -65,6 +67,37 @@
                 <div class="check-up__wrapper container">
                     <div class="check-up__inner">
 
+                    <?php 
+                        $check_ups = get_check_up_all();
+                        forEach($check_ups as $check_up):?>
+                        <div data-card-id="<?= $check_up["id"]?>" class="card">
+                         <div class="card__content">
+                            <div class="card__text-content">
+                                <h2 class="card__title"><?= $check_up["title"]?></h2>
+                                <p class="card__gender"><?= $check_up["gender"]?></p>
+                                <ul class="card__tests">
+                                    <?php 
+                                    $tests = get_check_up_tests($check_up["id"]);
+
+                                    
+                                    forEach($tests as $test):?>
+                                        <li class="card__test"><?= $test[0]?></li>
+                                    <?php endforeach; ?>
+                                </ul>
+                                <div class="card__price">
+                                    <p class="card__total-price"><?= $check_up["curr_price"].'₽'?></p>
+                                    <p class="card__ex-price"><?= $check_up["ex_price"].'₽'?></p>
+                                </div>
+                            </div>
+
+                            <div class="card__btns">
+                                <button data-popup="appointment" class="button button__card">Записаться</button>
+                                <button data-card-id="<?= $check_up["id"]?>" data-popup="more" class="button button__card button__card_grey">Подробнее</button>
+                            </div>
+                        </div>
+                    </div>
+                        
+                    <?php endforeach; ?>
                     </div>
                 </div>
                 <div class="check-up__controls controls">
@@ -77,7 +110,7 @@
                     <img src="./images/icons/right-arr.svg" alt="Стрелочка вправо" class="controls__arr controls__arr_right">
                 </div>
             </section>
-
+            
             <section class="popup">
                 <div class="popup__window" id="appointment">
                     <img src="./images/icons/close-icon.svg" alt="Закрыть" class="popup__close">
@@ -94,32 +127,16 @@
                 </div>
                 <div class="popup__window" id="more">
                     <img src="./images/icons/close-icon.svg" alt="Закрыть" class="popup__close">
-                    <h3 class="popup__title">title</h3>
-                    <div class="popup__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, beatae blanditiis tenetur voluptatem cupiditate dicta tempora necessitatibus vitae, atque corporis repellendus. A maxime nemo impedit enim et minus, fugiat corporis!</div>
+                    <?php 
+                        $check_ups = get_check_up_all();
+                        forEach($check_ups as $check_up):?>
+                    <div data-curr-card-id="<?= $check_up["id"]?>" class="popup__text-content">
+                        <h3 class="popup__title"><?= $check_up["title"]?></h3>
+                        <div class="popup__text"><?= $check_up["descript"]?></div>
+                    </div>
+                    <?php endforeach; ?>
                 </div>
             </section>
-
-            <template id="card">
-                <div class="card">
-                    <div class="card__content">
-                        <div class="card__text-content">
-                            <h2 class="card__title">Check-UP</h2>
-                            <p class="card__gender">для мужчин</p>
-                            <ul class="card__tests">
-                            </ul>
-                            <div class="card__price">
-                                <p class="card__total-price">Всего 2800₽</p>
-                                <p class="card__ex-price">3500₽</p>
-                            </div>
-                        </div>
-
-                        <div class="card__btns">
-                            <button data-popup="appointment" class="button button__card">Записаться</button>
-                            <button data-popup="more" class="button button__card button__card_grey">Подробнее</button>
-                        </div>
-                    </div>
-                </div>
-            </template>
         </main>
 
         <footer class="footer">

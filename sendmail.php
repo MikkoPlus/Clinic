@@ -48,11 +48,8 @@
         $mail->Body = $body;
     
         $mail->send();
-        $message = 'Данные отправлены';
-        $response = ['message' => $message];
-    
+
         header('Content-type: application/json');
-        echo json_encode($response); 
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }

@@ -29,7 +29,7 @@
         // От кого письмо
         $mail->setFrom('testEmail4work@yandex.ru', 'Иван Иванов');
         // Кому отправить
-        $mail->addAddress('testEmail4work@yandex.ru');
+        $mail->addAddress('rbru-metrika@yandex.ru');
         // Тема письма
         $mail->Subject = 'Тестовое письмо';
     

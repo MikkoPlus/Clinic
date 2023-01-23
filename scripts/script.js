@@ -134,11 +134,10 @@ window.addEventListener('DOMContentLoaded', () => {
     
         targetPopup.parentElement.classList.remove('popup_open');
 
-        let id = targetPopup.getAttribute('id');
-
-        if (id === 'more') {
-          targetPopup.querySelectorAll('.popup__text-content').forEach(item => item.classList.remove('popup__text-content_open'));
-        }
+        // let id = targetPopup.getAttribute('id');
+        // if (id === 'more') {
+        //   targetPopup.querySelectorAll('.popup__text-content').forEach(item => item.classList.remove('popup__text-content_open'));
+        // }
     
         setTimeout(() => {
           targetPopup.classList.remove('popup__window_open');
@@ -155,12 +154,12 @@ window.addEventListener('DOMContentLoaded', () => {
                   popupId = targetBtn.getAttribute('data-popup'),
                   targetPopup = popup.querySelector(`#${popupId}`);
 
-            if (popupId === 'more') {
-              const dataAtrCardId = btn.getAttribute('data-card-id');
+            // if (popupId === 'more') {
+            //   const dataAtrCardId = btn.getAttribute('data-card-id');
 
-              const currPopup = targetPopup.querySelector(`.popup__text-content[data-curr-card-id="${dataAtrCardId}"]`);
-              currPopup.classList.add('popup__text-content_open');
-            }
+            //   const currPopup = targetPopup.querySelector(`.popup__text-content[data-curr-card-id="${dataAtrCardId}"]`);
+            //   currPopup.classList.add('popup__text-content_open');
+            // }
             openPopup(targetPopup);
           });
         }

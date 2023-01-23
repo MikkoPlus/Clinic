@@ -3,7 +3,6 @@
 
 @import url('../blocks/page/page.css');
 @import url('../blocks/page/_lock/page_lock.css');
-@import url('../blocks/container/container.css');
 @import url('../blocks/link/link.css');
 @import url('../blocks/logo/logo.css');
 @import url('../blocks/button/button.css');
@@ -43,6 +42,7 @@
 @import url('../blocks/menu/__list/menu__list.css');
 @import url('../blocks/menu/__item/menu__item.css');
 @import url('../blocks/menu/__link/menu__link.css');
+@import url('../blocks/container/container.css');
 
 @import url('../blocks/about/about.css');
 @import url('../blocks/about/__text-content/about__text-content.css');

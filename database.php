@@ -1,9 +1,10 @@
 <?php
 
 $dbhost = "localhost";
-$dbname = "test_db";
-$username = "root";
-$password = "root";
+$dbname = "sharov8e_myadmin";
+$username = "sharov8e_myadmin";
+$password = "2&nXFWIi";
+
 
 $db = new PDO("mysql:host=$dbhost; dbname=$dbname;", $username, $password);
 

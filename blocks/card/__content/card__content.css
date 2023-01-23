@@ -15,7 +15,7 @@
     position: absolute;
     top: -50px;
     right: -117px;
-    border: 560px solid transparent;
+    border: 700px solid transparent;
     border-bottom: 0px solid transparent;
     border-right: 0px solid transparent;
     border-left: 118px solid #E2F0EF;
@@ -37,6 +37,6 @@
 @media (max-width: 565px) {
     .card__content {
         width: 100%;
-        padding: 53px 20px 56px 63px;
+        padding: 53px 35px 56px;
     }
 }

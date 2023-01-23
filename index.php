@@ -66,7 +66,6 @@
             <section class="check-up">
                 <div class="check-up__wrapper container">
                     <div class="check-up__inner">
-
                     <?php 
                         $check_ups = get_check_up_all();
                         forEach($check_ups as $check_up):?>
